@@ -1,16 +1,25 @@
 # flutter_riverpod_authentication
+## 概要
+- Firebase Auth x Riverpod StreamProviderの状態管理を試す
 
-A new Flutter project.
+## 機能
+- 常に何かしらの認証状態を持ち、画面に表示する
+- ボタンをタップすることで認証状態を変更する
 
-## Getting Started
+## Stream とは
+データが変化するのを監視して、変化があったら反映させる
 
-This project is a starting point for a Flutter application.
+## Riverpod での Stream(StreamProvider)
+例えばログイン状態を管理するとき、
+`FirebaseAuthentication`の`authStateChanges()`と組み合わせることで、
+`FirebaseAuth.instance.signOut()`などのログイン状態を変更する動きをキャッチして状態を変更させる。
+これにより、ロジック側でログイン・ログアウト操作をするだけでproviderの状態が変更される。
+ログイン状況によってUIを用意していれば、状態が変わった時にUIも切り替わる。
 
-A few resources to get you started if this is your first Flutter project:
+## メモ
+### riverpod_generator
+`flutter pub run build_runner build --delete-conflicting-outputs`
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### 環境変数について
+CLIENT_ID,REVERSED_CLIENT_IDは環境変数にしたいけど今回は省略
+Info.plistを書き換えてしまうとGitに反映されてしまうので書き換えずに内部的に値を持つようにしたい
