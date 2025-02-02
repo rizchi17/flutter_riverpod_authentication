@@ -43,3 +43,16 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Firebase関連
+firebase_options.dart
+.firebaserc
+google-services.json
+GoogleService-Info.plist
+.env
+*.env
+firebase-debug.log
+flutterfire_cli.log
+.firebase/
+.credentials.json
+serviceAccountKey.json
